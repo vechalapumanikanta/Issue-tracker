@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issue Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #issueForm {
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    #issuesList {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .issue {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="issueForm">
+    <h2>Create New Issue</h2>
+    <form id="newIssueForm">
+      <label for="issueTitle">Title:</label>
+      <input type="text" id="issueTitle" required>
+
+      <label for="issueDescription">Description:</label>
+      <textarea id="issueDescription" required></textarea>
+
+      <button type="button" onclick="addIssue()">Add Issue</button>
+    </form>
+  </div>
+
+  <div id="issuesList">
+    <h2>Issues</h2>
+    <div id="issuesContainer"></div>
+  </div>
+
+  <script>
+    function addIssue() {
+      var title = document.getElementById("issueTitle").value;
+      var description = document.getElementById("issueDescription").value;
+
+      if (title && description) {
+        var issueContainer = document.getElementById("issuesContainer");
+
+        var issueDiv = document.createElement("div");
+        issueDiv.className = "issue";
+        issueDiv.innerHTML = "<h3>" + title + "</h3><p>" + description + "</p>";
+
+        issueContainer.appendChild(issueDiv);
+
+        
+        document.getElementById("newIssueForm").reset();
+      } else {
+        alert("Please fill out both title and description.");
+      }
+    }
+  </script>
+
+</body>
+</html>
